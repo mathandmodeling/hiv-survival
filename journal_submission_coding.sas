@@ -1,10 +1,10 @@
-/********************************************************************/
-/*																	*/
-/*																	*/
-/*		     Data subsetting and formatting					     	*/
-/*																	*/
-/*																	*/
-/********************************************************************/
+/****************************************************************/
+/*						  		*/
+/*								*/
+/*	    Data subsetting and formatting		     	*/
+/*								*/
+/*								*/
+/*****************************************************************/
 *formmatting a graph;
 proc import datafile="E:\Research\Manuscript\HIVprogression\DATA_FOR_JOURNAL\02_Merged\Journal_submission_Af_demog_vst_hivcare_cd4_s.xls" dbms=xls out=Af_demog_vst_hivcare_cd4_s replace;
 run;
@@ -114,13 +114,12 @@ run;
 
 
 
-/********************************************************************/
-/*																	*/
-/*																	*/
-/*	 		Logistic regression (HIV(+) vs. HIV(-))					*/
-/*																	*/
-/*																	*/
-/********************************************************************/
+/****************************************************************/
+/*								*/
+/*							        */
+/*        Logistic regression (HIV(+) vs. HIV(-))		*/							
+/*								*/
+/****************************************************************/
 
 
 /************Logistic regression (Odds ratio)***********************/
@@ -206,13 +205,13 @@ proc boxplot data =negative_m;
   plot ln_aflatoxinB1*time;
 run;
 
-/********************************************************************/
-/*																	*/
-/*																	*/
-/*	      	HIV positive dataset (Survival Analysis)	     		*/
-/*																	*/
-/*																	*/
-/********************************************************************/
+/****************************************************************/
+/*								*/
+/*								*/
+/*     	HIV positive dataset (Survival Analysis)     		*/
+/*								*/
+/*								*/
+/*****************************************************************/
 *Multiple Cox Proportional Hazard model;
 
 proc phreg data=positive_s;
@@ -241,13 +240,13 @@ proc lifetest data=positive_s atrisk plots=survival(atrisk cb) outs=outrural;
 	time incubation*event(0);
 run; 
 
-/****************************************************************************/
-/*																			*/
-/*																			*/
-/*					Testting proportional hazard assumption 				*/
-/*  	        	(cumulative sums of martingale residuals)			    */
-/*																			*/
-/****************************************************************************/
+/************************************************************************/
+/*	         							*/
+/*									*/
+/*	    Testting proportional hazard assumption       		*/
+/*  	    (cumulative sums of martingale residuals)                   */
+/*								        */
+/*************************************************************************/
 
 proc phreg data=positive_s;
       class education(ref='0') occupation(ref='1') religion(ref='1') tribe(ref='1') sex (ref='1')   area(ref='1')     marital_dis(ref='0')/param=ref;
